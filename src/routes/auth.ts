@@ -1,17 +1,19 @@
 import express from "express";
 import getDb from "../db";
+import {Request, Response} from 'express';
 import { User } from "../db/types";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 const router = express.Router();
 
-router.post("/register", async (req, res) => {
+router.post("/register", async (req: Request, res: Response) => {
 
     const db = getDb();
     const users = db.collection<User>("user");
 
     const password = await bcrypt.hash(req.body.password, 10);
+
 
     await users.insertOne({
         email: req.body.email,

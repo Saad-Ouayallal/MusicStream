@@ -31,15 +31,13 @@ router.post(
         }
 
         // const cluster = await predictFromGridFS(model, req.file.filename);
-
+        console.log("heeer",req.auth)
         const result = await collection.insertOne({
             userId: req.auth.id,
             filename: req.file.filename,
             mimeType: req.file.mimetype,
             title: req.body.title,
             duration: req.body.duration,
-            genre: req.body.genre,
-            lyrics: req.body.lyrics,
             uploaded: new Date(),
         });
 
@@ -193,7 +191,7 @@ router.get(
             "Content-Type": song.mimeType,
             "Transfer-Encoding": "chunked",
         });
-
+        console.log("heere",song)
         bucket.openDownloadStreamByName(song.filename).pipe(res);
     })
 );

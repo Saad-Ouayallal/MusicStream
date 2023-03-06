@@ -13,7 +13,7 @@ const injectUser = async (req: Request, res: Response, next: NextFunction) => {
         req.user = await users.findOne({
             _id: req.auth.id,
         });
-        console.log("req.user", req.user, req.auth.id);
+        // console.log("req.user", req.user, req.auth.id);
     }
 
     next();

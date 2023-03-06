@@ -12,9 +12,7 @@ export interface Song {
     filename: string;
     mimeType: string;
     title: string;
-    genre?: string;
     release?: Date;
     duration: number;
-    lyrics?: string;
     uploaded: Date;
 }
